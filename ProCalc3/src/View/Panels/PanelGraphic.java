@@ -5,6 +5,7 @@
 package View.Panels;
 
 import java.awt.Color;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -17,7 +18,8 @@ public class PanelGraphic extends javax.swing.JPanel {
      */
     public PanelGraphic() {
         initComponents();
-        setBackground(new Color(0,0,0,0));
+        setBackground(new Color(0, 0, 0, 0));
+
     }
 
     /**
@@ -29,30 +31,161 @@ public class PanelGraphic extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        ResultXsobreY = new javax.swing.JLabel();
+        ResultPearson = new javax.swing.JLabel();
+        ResultSpearman = new javax.swing.JLabel();
+        ResultCovarianza = new javax.swing.JLabel();
+        ResultYsobreX = new javax.swing.JLabel();
+        PanelCoefYsobreX = new javax.swing.JLabel();
+        PanelCovarianza = new javax.swing.JLabel();
+        PanelCoefXsobreY = new javax.swing.JLabel();
+        PanelSpearman = new javax.swing.JLabel();
+        PanelPearson = new javax.swing.JLabel();
 
-        jLabel1.setText("graphics");
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(324, 324, 324)
-                .addComponent(jLabel1)
-                .addContainerGap(385, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(236, 236, 236)
-                .addComponent(jLabel1)
-                .addContainerGap(403, Short.MAX_VALUE))
-        );
+        ResultXsobreY.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        ResultXsobreY.setForeground(new java.awt.Color(204, 204, 204));
+        ResultXsobreY.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ResultXsobreY.setText("0");
+        add(ResultXsobreY, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 540, 160, 50));
+
+        ResultPearson.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        ResultPearson.setForeground(new java.awt.Color(204, 204, 204));
+        ResultPearson.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ResultPearson.setText("0");
+        add(ResultPearson, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 160, 50));
+
+        ResultSpearman.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        ResultSpearman.setForeground(new java.awt.Color(204, 204, 204));
+        ResultSpearman.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ResultSpearman.setText("0");
+        add(ResultSpearman, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 160, 160, 50));
+
+        ResultCovarianza.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        ResultCovarianza.setForeground(new java.awt.Color(204, 204, 204));
+        ResultCovarianza.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ResultCovarianza.setText("0");
+        add(ResultCovarianza, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 160, 50));
+
+        ResultYsobreX.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        ResultYsobreX.setForeground(new java.awt.Color(204, 204, 204));
+        ResultYsobreX.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ResultYsobreX.setText("0");
+        add(ResultYsobreX, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 340, 160, 50));
+
+        PanelCoefYsobreX.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        PanelCoefYsobreX.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/PanelsGraphic/PanelYsobreX.png"))); // NOI18N
+        PanelCoefYsobreX.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                PanelCoefYsobreXMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                PanelCoefYsobreXMouseExited(evt);
+            }
+        });
+        add(PanelCoefYsobreX, new org.netbeans.lib.awtextra.AbsoluteConstraints(444, 240, -1, -1));
+
+        PanelCovarianza.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        PanelCovarianza.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/PanelsGraphic/PanelCovarianza.png"))); // NOI18N
+        PanelCovarianza.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                PanelCovarianzaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                PanelCovarianzaMouseExited(evt);
+            }
+        });
+        add(PanelCovarianza, new org.netbeans.lib.awtextra.AbsoluteConstraints(103, 47, 220, 180));
+
+        PanelCoefXsobreY.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        PanelCoefXsobreY.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/PanelsGraphic/PanelXsobreY.png"))); // NOI18N
+        PanelCoefXsobreY.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                PanelCoefXsobreYMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                PanelCoefXsobreYMouseExited(evt);
+            }
+        });
+        add(PanelCoefXsobreY, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 439, -1, -1));
+
+        PanelSpearman.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        PanelSpearman.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/PanelsGraphic/PanelSpearman.png"))); // NOI18N
+        PanelSpearman.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                PanelSpearmanMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                PanelSpearmanMouseExited(evt);
+            }
+        });
+        add(PanelSpearman, new org.netbeans.lib.awtextra.AbsoluteConstraints(434, 50, 230, 180));
+
+        PanelPearson.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        PanelPearson.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/PanelsGraphic/PanelPearson.png"))); // NOI18N
+        PanelPearson.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                PanelPearsonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                PanelPearsonMouseExited(evt);
+            }
+        });
+        add(PanelPearson, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void PanelCovarianzaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelCovarianzaMouseEntered
+        PanelCovarianza.setIcon(new ImageIcon(PanelGraphic.class.getResource("/img/PanelsGraphic/PanelCovarianzaActive.png")));
+    }//GEN-LAST:event_PanelCovarianzaMouseEntered
+
+    private void PanelCovarianzaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelCovarianzaMouseExited
+        PanelCovarianza.setIcon(new ImageIcon(PanelGraphic.class.getResource("/img/PanelsGraphic/PanelCovarianza.png")));
+    }//GEN-LAST:event_PanelCovarianzaMouseExited
+
+    private void PanelSpearmanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelSpearmanMouseEntered
+        PanelSpearman.setIcon(new ImageIcon(PanelGraphic.class.getResource("/img/PanelsGraphic/PanelSpearmanActive.png")));
+    }//GEN-LAST:event_PanelSpearmanMouseEntered
+
+    private void PanelSpearmanMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelSpearmanMouseExited
+        PanelSpearman.setIcon(new ImageIcon(PanelGraphic.class.getResource("/img/PanelsGraphic/PanelSpearman.png")));
+    }//GEN-LAST:event_PanelSpearmanMouseExited
+
+    private void PanelPearsonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelPearsonMouseEntered
+        PanelPearson.setIcon(new ImageIcon(PanelGraphic.class.getResource("/img/PanelsGraphic/PanelPearsonActive.png")));
+    }//GEN-LAST:event_PanelPearsonMouseEntered
+
+    private void PanelPearsonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelPearsonMouseExited
+        PanelPearson.setIcon(new ImageIcon(PanelGraphic.class.getResource("/img/PanelsGraphic/PanelPearson.png")));
+    }//GEN-LAST:event_PanelPearsonMouseExited
+
+    private void PanelCoefYsobreXMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelCoefYsobreXMouseEntered
+        PanelCoefYsobreX.setIcon(new ImageIcon(PanelGraphic.class.getResource("/img/PanelsGraphic/PanelCofYsobreXActive.png")));
+    }//GEN-LAST:event_PanelCoefYsobreXMouseEntered
+
+    private void PanelCoefYsobreXMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelCoefYsobreXMouseExited
+        PanelCoefYsobreX.setIcon(new ImageIcon(PanelGraphic.class.getResource("/img/PanelsGraphic/PanelYsobreX.png")));
+    }//GEN-LAST:event_PanelCoefYsobreXMouseExited
+
+    private void PanelCoefXsobreYMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelCoefXsobreYMouseEntered
+        PanelCoefXsobreY.setIcon(new ImageIcon(PanelGraphic.class.getResource("/img/PanelsGraphic/PanelCoefXsobreYActive.png")));
+    }//GEN-LAST:event_PanelCoefXsobreYMouseEntered
+
+    private void PanelCoefXsobreYMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelCoefXsobreYMouseExited
+        PanelCoefXsobreY.setIcon(new ImageIcon(PanelGraphic.class.getResource("/img/PanelsGraphic/PanelXsobreY.png")));
+    }//GEN-LAST:event_PanelCoefXsobreYMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel PanelCoefXsobreY;
+    private javax.swing.JLabel PanelCoefYsobreX;
+    private javax.swing.JLabel PanelCovarianza;
+    private javax.swing.JLabel PanelPearson;
+    private javax.swing.JLabel PanelSpearman;
+    private javax.swing.JLabel ResultCovarianza;
+    private javax.swing.JLabel ResultPearson;
+    private javax.swing.JLabel ResultSpearman;
+    private javax.swing.JLabel ResultXsobreY;
+    private javax.swing.JLabel ResultYsobreX;
     // End of variables declaration//GEN-END:variables
 }

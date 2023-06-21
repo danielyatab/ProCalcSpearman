@@ -4,22 +4,34 @@
  */
 package View.Panels;
 
-import View.StaticBackground;
+import Controller.ControllerExcel;
+import View.Static;
 import java.awt.Color;
+import java.io.File;
+import static java.lang.String.valueOf;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author yatac
  */
 public class PanelCalculate extends javax.swing.JPanel {
-
+    ControllerExcel model_ex =  new ControllerExcel();
+    JFileChooser archivo_selec = new JFileChooser();
+    File archivo;
+    
+    
     /**
      * Creates new form Calculate
      */
     public PanelCalculate() {
         initComponents();
         setBackground(new Color(0,0,0,0));
+        listTable();
     }
 
     /**
@@ -32,55 +44,88 @@ public class PanelCalculate extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jPanel1 = new StaticBackground.FondoPanelTxt();
-        jPanel2 = new StaticBackground.FondoPanelTxt();
+        TableData = new javax.swing.JTable();
+        jPanel1 = new View.Static.FondoPanelTxt();
+        txtX = new javax.swing.JTextField();
+        jPanel2 = new View.Static.FondoPanelTxt();
+        txtY = new javax.swing.JTextField();
         ButtonCalculate = new javax.swing.JLabel();
         ButtonAddData = new javax.swing.JLabel();
         ButtonAddFile = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
-        jTable1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TableData.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        TableData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"12", "23"},
-                {"123", "323"},
-                {"12", "12"},
-                {"123", "123"},
-                {"32", null}
+
             },
             new String [] {
                 "X", "Y"
             }
         ));
-        jTable1.setRowHeight(40);
-        jScrollPane1.setViewportView(jTable1);
+        TableData.setRowHeight(40);
+        jScrollPane1.setViewportView(TableData);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+
+        txtX.setBackground(new java.awt.Color(217, 217, 217));
+        txtX.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
+        txtX.setForeground(new java.awt.Color(0, 51, 102));
+        txtX.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtX.setBorder(null);
+        txtX.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtXKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 249, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtX, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtX)
+                .addContainerGap())
         );
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
+
+        txtY.setBackground(new java.awt.Color(217, 217, 217));
+        txtY.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
+        txtY.setForeground(new java.awt.Color(0, 51, 102));
+        txtY.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtY.setBorder(null);
+        txtY.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtYKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 249, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtY, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 47, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtY)
+                .addContainerGap())
         );
 
         ButtonCalculate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -126,10 +171,21 @@ public class PanelCalculate extends javax.swing.JPanel {
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon/X.png"))); // NOI18N
 
+        jButton1.setText("CLEAR TABLE");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(ButtonCalculate, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(55, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,19 +205,19 @@ public class PanelCalculate extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(51, 51, 51)))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
                 .addGap(37, 37, 37))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(ButtonCalculate, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(85, 85, 85)
+                        .addGap(47, 47, 47)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -179,13 +235,12 @@ public class PanelCalculate extends javax.swing.JPanel {
                         .addComponent(ButtonAddFile, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(2, 2, 2)))
                 .addComponent(ButtonCalculate, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonAddDataMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtonAddDataMouseEntered
        ButtonAddData.setIcon(new ImageIcon(getClass().getResource("/img/buttons/ButtonAddDataoOpaque.png")));
-       
     }//GEN-LAST:event_ButtonAddDataMouseEntered
 
     private void ButtonAddDataMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtonAddDataMouseExited
@@ -193,11 +248,21 @@ public class PanelCalculate extends javax.swing.JPanel {
     }//GEN-LAST:event_ButtonAddDataMouseExited
 
     private void ButtonAddFileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtonAddFileMouseClicked
-        // TODO add your handling code here:
+       verifAumentDate();
     }//GEN-LAST:event_ButtonAddFileMouseClicked
 
     private void ButtonAddDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtonAddDataMouseClicked
-        // TODO add your handling code here:
+          /*
+        * Insert Dates
+        */
+       if(txtX.getText().isEmpty() || txtY.getText().isEmpty()){
+           JOptionPane.showMessageDialog(null, "Ingrese datos validos","",JOptionPane.ERROR_MESSAGE);
+       }else {
+           if(insertXY(Double.parseDouble(txtX.getText()),Double.parseDouble(txtY.getText()))){
+               listTable();
+               clearCamp();
+           }
+       }
     }//GEN-LAST:event_ButtonAddDataMouseClicked
 
     private void ButtonAddFileMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtonAddFileMouseEntered
@@ -216,16 +281,178 @@ public class PanelCalculate extends javax.swing.JPanel {
         ButtonCalculate.setIcon(new ImageIcon(getClass().getResource("/img/buttons/ButtonCalculate.png")));
     }//GEN-LAST:event_ButtonCalculateMouseExited
 
+    private void txtXKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtXKeyTyped
+        char c = evt.getKeyChar();
 
+        // Permitir teclas de control como backspace y delete
+        if (Character.isISOControl(c)) {
+            txtX.setEditable(true);
+            return;
+        }
+
+        // Permitir el punto decimal si no se ha ingresado previamente
+        if (c == '.' && txtX.getText().contains(".")) {
+            txtX.setEditable(false);
+            evt.consume();
+            return;
+        }
+
+        // Permitir solo dígitos y el punto decimal
+        if (!Character.isDigit(c) && c != '.') {
+            txtX.setEditable(false);
+            evt.consume();
+        } else {
+            // Validar que solo haya hasta 2 decimales
+            String text = txtX.getText();
+            int dotIndex = text.indexOf('.');
+            if (dotIndex != -1 && text.substring(dotIndex).length() > 2) {
+                txtX.setEditable(false);
+                evt.consume();
+            } else {
+                txtX.setEditable(true);
+            }
+        }
+    }//GEN-LAST:event_txtXKeyTyped
+
+    private void txtYKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtYKeyTyped
+        char c = evt.getKeyChar();
+
+        // Permitir teclas de control como backspace y delete
+        if (Character.isISOControl(c)) {
+            txtY.setEditable(true);
+            return;
+        }
+
+        // Permitir el punto decimal si no se ha ingresado previamente
+        if (c == '.' && txtY.getText().contains(".")) {
+            txtY.setEditable(false);
+            evt.consume();
+            return;
+        }
+
+        // Permitir solo dígitos y el punto decimal
+        if (!Character.isDigit(c) && c != '.') {
+            txtY.setEditable(false);
+            evt.consume();
+        } else {
+            // Validar que solo haya hasta 2 decimales
+            String text = txtY.getText();
+            int dotIndex = text.indexOf('.');
+            if (dotIndex != -1 && text.substring(dotIndex).length() > 2) {
+                txtY.setEditable(false);
+                evt.consume();
+            } else {
+                txtY.setEditable(true);
+            }
+        }
+    }//GEN-LAST:event_txtYKeyTyped
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Static.xList = new ArrayList<>();
+        Static.yList = new ArrayList<>();
+        listTable();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+
+    /******************Methods********************/
+    public boolean insertXY(double x, double y){
+        if(valueOf(x).isEmpty() || valueOf(y).isEmpty()){
+            return false;
+        }else {
+            Static.xList.add(x);
+            Static.yList.add(y);
+            return true;
+        }
+    }
+    
+    
+    public void listTable(){
+        DefaultTableModel modelo =  new DefaultTableModel();
+        String[] columnas = {"X","Y"};
+        modelo.setColumnIdentifiers(columnas);
+        for(int i=0; i<Static.xList.size(); i++){
+            Object[] o = new Object[2];
+            o[0] = Static.xList.get(i);
+            o[1] = Static.yList.get(i);
+            modelo.addRow(o);
+        }
+        TableData.setModel(modelo);
+    }
+    
+    public void clearCamp(){
+        txtX.setText("");
+        txtY.setText("");
+    }
+    
+    public void verifAumentDate(){
+         // Opciones disponibles para el usuario
+        String[] opciones = {"Aumentar Datos ", "Remplazar Datos"};
+
+        // Mostrar el JOptionPane con las opciones y guardar la opción seleccionada
+        int opcionSeleccionada = JOptionPane.showOptionDialog(
+                null, // Componente padre (en este caso, ninguno)
+                "¿Como desea insertar los datos?", // Mensaje a mostrar
+                "", // Título del diálogo
+                JOptionPane.DEFAULT_OPTION, // Tipo de opción predeterminada
+                JOptionPane.PLAIN_MESSAGE, // Tipo de mensaje
+                null, // Icono personalizado (en este caso, ninguno)
+                opciones, // Opciones disponibles
+                opciones[0] // Opción predeterminada
+        );
+
+        if(opcionSeleccionada == 0){
+            importExcel();
+            aumentData();
+        }else if(opcionSeleccionada == 1){
+            Static.xList = new ArrayList();
+            Static.yList = new ArrayList();
+            importExcel();
+            aument();
+        }
+        
+    }
+    
+    
+    public void importExcel(){
+       if(archivo_selec.showDialog(null, "Seleccionar archivo") == JFileChooser.APPROVE_OPTION){ // CUADRO DE SLECCION DE CARPETA 
+                archivo = archivo_selec.getSelectedFile();
+                if(archivo.getName().endsWith("xls") || archivo.getName().endsWith("xlsx")){ //Si el archivo tiene extension excel
+                    /*Enviamos por pamaremtro el archivo y
+                    *el llenado de datos ala tabla*/
+                    model_ex.importar(archivo, TableData) ;
+                    JOptionPane.showMessageDialog(null, "\n Importacion Exitosa", 
+                            "IMPORTAR", JOptionPane.INFORMATION_MESSAGE); 
+                }else{
+                    JOptionPane.showMessageDialog(null, "Seleccione un archivo excel");
+                }
+        }
+    }
+    
+    void aumentData(){
+        aument();
+        listTable();
+    }
+    
+    void aument(){
+        /*LLenado de datos nuevos en la lsita estitca*/
+        for(int i=0; i<TableData.getRowCount(); i++){
+            System.out.println("Agregando");
+            Static.xList.add(Double.parseDouble(valueOf(TableData.getValueAt(i, 0))));
+            Static.yList.add(Double.parseDouble(valueOf(TableData.getValueAt(i, 1))));
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ButtonAddData;
     private javax.swing.JLabel ButtonAddFile;
     private javax.swing.JLabel ButtonCalculate;
+    private javax.swing.JTable TableData;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField txtX;
+    private javax.swing.JTextField txtY;
     // End of variables declaration//GEN-END:variables
 }

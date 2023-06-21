@@ -47,14 +47,14 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        PanelBackground = new StaticBackground.FondoPanelOscuro();
-        jPanelMenu = new StaticBackground.FondoPanelMenu();
+        PanelBackground = new Static.FondoPanelOscuro();
+        jPanelMenu = new Static.FondoPanelMenu();
         jLabelLogo = new javax.swing.JLabel();
         ButtonXY = new javax.swing.JLabel();
         ButtonGraphic = new javax.swing.JLabel();
         ButtonCalculate = new javax.swing.JLabel();
-        jPanelContent = new StaticBackground.FondoPanelContent();
-        jPanelHead = new StaticBackground.FondoPanelHead();
+        jPanelContent = new Static.FondoPanelContent();
+        jPanelHead = new Static.FondoPanelHead();
         btnClose = new javax.swing.JLabel();
         btnMinimize = new javax.swing.JLabel();
 
