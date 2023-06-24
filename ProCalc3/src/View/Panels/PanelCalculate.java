@@ -4,8 +4,10 @@
  */
 package View.Panels;
 
+import Controller.ControlTxt;
 import Controller.ControllerExcel;
 import View.Static;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.io.File;
 import static java.lang.String.valueOf;
@@ -13,6 +15,7 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -20,17 +23,18 @@ import javax.swing.table.DefaultTableModel;
  * @author yatac
  */
 public class PanelCalculate extends javax.swing.JPanel {
-    ControllerExcel model_ex =  new ControllerExcel();
+
+    ControllerExcel model_ex = new ControllerExcel();
     JFileChooser archivo_selec = new JFileChooser();
     File archivo;
-    
-    
+
     /**
      * Creates new form Calculate
      */
     public PanelCalculate() {
         initComponents();
-        setBackground(new Color(0,0,0,0));
+        setBackground(new Color(0, 0, 0, 0));
+        PanelContentCalc.setBackground(new Color(0, 0, 0, 0));
         listTable();
     }
 
@@ -43,30 +47,21 @@ public class PanelCalculate extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        TableData = new javax.swing.JTable();
+        PanelContentCalc = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
         jPanel1 = new View.Static.FondoPanelTxt();
         txtX = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
         jPanel2 = new View.Static.FondoPanelTxt();
         txtY = new javax.swing.JTextField();
-        ButtonCalculate = new javax.swing.JLabel();
         ButtonAddData = new javax.swing.JLabel();
         ButtonAddFile = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TableData = new javax.swing.JTable();
+        ButtonCalculate = new javax.swing.JLabel();
 
-        TableData.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        TableData.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "X", "Y"
-            }
-        ));
-        TableData.setRowHeight(40);
-        jScrollPane1.setViewportView(TableData);
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon/X.png"))); // NOI18N
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -87,16 +82,18 @@ public class PanelCalculate extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtX, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(txtX, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtX)
-                .addContainerGap())
+                .addComponent(txtX, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon/Y.png"))); // NOI18N
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -117,27 +114,16 @@ public class PanelCalculate extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtY, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(txtY, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtY)
-                .addContainerGap())
+                .addComponent(txtY, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        ButtonCalculate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ButtonCalculate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/buttons/ButtonCalculate.png"))); // NOI18N
-        ButtonCalculate.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                ButtonCalculateMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                ButtonCalculateMouseExited(evt);
-            }
-        });
 
         ButtonAddData.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ButtonAddData.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/buttons/ButtonAddData.png"))); // NOI18N
@@ -167,10 +153,6 @@ public class PanelCalculate extends javax.swing.JPanel {
             }
         });
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon/Y.png"))); // NOI18N
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon/X.png"))); // NOI18N
-
         jButton1.setText("CLEAR TABLE");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -178,91 +160,133 @@ public class PanelCalculate extends javax.swing.JPanel {
             }
         });
 
+        TableData.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        TableData.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "X", "Y"
+            }
+        ));
+        TableData.setRowHeight(40);
+        jScrollPane1.setViewportView(TableData);
+
+        ButtonCalculate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ButtonCalculate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/buttons/ButtonCalculate.png"))); // NOI18N
+        ButtonCalculate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ButtonCalculateMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ButtonCalculateMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ButtonCalculateMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout PanelContentCalcLayout = new javax.swing.GroupLayout(PanelContentCalc);
+        PanelContentCalc.setLayout(PanelContentCalcLayout);
+        PanelContentCalcLayout.setHorizontalGroup(
+            PanelContentCalcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelContentCalcLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ButtonCalculate, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelContentCalcLayout.createSequentialGroup()
+                .addGroup(PanelContentCalcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(PanelContentCalcLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PanelContentCalcLayout.createSequentialGroup()
+                        .addGroup(PanelContentCalcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PanelContentCalcLayout.createSequentialGroup()
+                                .addGap(43, 43, 43)
+                                .addGroup(PanelContentCalcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(PanelContentCalcLayout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addGap(19, 19, 19)
+                                        .addGroup(PanelContentCalcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(PanelContentCalcLayout.createSequentialGroup()
+                                                .addGap(1, 1, 1)
+                                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jLabel6))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE))
+                            .addGroup(PanelContentCalcLayout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(PanelContentCalcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(ButtonAddFile, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ButtonAddData, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(32, 32, 32)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(37, 37, 37))
+        );
+        PanelContentCalcLayout.setVerticalGroup(
+            PanelContentCalcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelContentCalcLayout.createSequentialGroup()
+                .addContainerGap(97, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(PanelContentCalcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelContentCalcLayout.createSequentialGroup()
+                        .addGap(74, 74, 74)
+                        .addGroup(PanelContentCalcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelContentCalcLayout.createSequentialGroup()
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel5))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelContentCalcLayout.createSequentialGroup()
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(27, 27, 27)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(ButtonAddData, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(ButtonAddFile, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ButtonCalculate, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(ButtonCalculate, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(55, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(ButtonAddFile, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ButtonAddData, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(51, 51, 51)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
-                .addGap(37, 37, 37))
+            .addComponent(PanelContentCalc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE))
-                        .addGap(64, 64, 64)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(51, 51, 51)
-                        .addComponent(ButtonAddData, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(ButtonAddFile, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)))
-                .addComponent(ButtonCalculate, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(58, Short.MAX_VALUE))
+            .addComponent(PanelContentCalc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonAddDataMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtonAddDataMouseEntered
-       ButtonAddData.setIcon(new ImageIcon(getClass().getResource("/img/buttons/ButtonAddDataoOpaque.png")));
+        ButtonAddData.setIcon(new ImageIcon(getClass().getResource("/img/buttons/ButtonAddDataoOpaque.png")));
     }//GEN-LAST:event_ButtonAddDataMouseEntered
 
     private void ButtonAddDataMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtonAddDataMouseExited
-       ButtonAddData.setIcon(new ImageIcon(getClass().getResource("/img/buttons/ButtonAddData.png")));
+        ButtonAddData.setIcon(new ImageIcon(getClass().getResource("/img/buttons/ButtonAddData.png")));
     }//GEN-LAST:event_ButtonAddDataMouseExited
 
     private void ButtonAddFileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtonAddFileMouseClicked
-       verifAumentDate();
+        verifAumentDate();
     }//GEN-LAST:event_ButtonAddFileMouseClicked
 
     private void ButtonAddDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtonAddDataMouseClicked
-          /*
+        /*
         * Insert Dates
-        */
-       if(txtX.getText().isEmpty() || txtY.getText().isEmpty()){
-           JOptionPane.showMessageDialog(null, "Ingrese datos validos","",JOptionPane.ERROR_MESSAGE);
-       }else {
-           if(insertXY(Double.parseDouble(txtX.getText()),Double.parseDouble(txtY.getText()))){
-               listTable();
-               clearCamp();
-           }
-       }
+         */
+        if (txtX.getText().isEmpty() || txtY.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingrese datos validos", "", JOptionPane.ERROR_MESSAGE);
+        } else {
+            if (insertXY(Double.parseDouble(txtX.getText()), Double.parseDouble(txtY.getText()))) {
+                listTable();
+                clearCamp();
+            }
+        }
     }//GEN-LAST:event_ButtonAddDataMouseClicked
 
     private void ButtonAddFileMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtonAddFileMouseEntered
@@ -353,24 +377,34 @@ public class PanelCalculate extends javax.swing.JPanel {
         listTable();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-
-    /******************Methods********************/
-    public boolean insertXY(double x, double y){
-        if(valueOf(x).isEmpty() || valueOf(y).isEmpty()){
-            return false;
+    private void ButtonCalculateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtonCalculateMouseClicked
+        /*Exportacion XY*/
+        if (Static.xList.size() != 0) {
+            ControlTxt.exportTxt();
+            addContainer(new PanelGraphic(), PanelContentCalc.getWidth(), PanelContentCalc.getHeight(), PanelContentCalc);
         }else {
+            JOptionPane.showMessageDialog(null, "La tabla no contiene ningun dato","",JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_ButtonCalculateMouseClicked
+
+    /**
+     * ****************Methods*******************
+     */
+    public boolean insertXY(double x, double y) {
+        if (valueOf(x).isEmpty() || valueOf(y).isEmpty()) {
+            return false;
+        } else {
             Static.xList.add(x);
             Static.yList.add(y);
             return true;
         }
     }
-    
-    
-    public void listTable(){
-        DefaultTableModel modelo =  new DefaultTableModel();
-        String[] columnas = {"X","Y"};
+
+    public void listTable() {
+        DefaultTableModel modelo = new DefaultTableModel();
+        String[] columnas = {"X", "Y"};
         modelo.setColumnIdentifiers(columnas);
-        for(int i=0; i<Static.xList.size(); i++){
+        for (int i = 0; i < Static.xList.size(); i++) {
             Object[] o = new Object[2];
             o[0] = Static.xList.get(i);
             o[1] = Static.yList.get(i);
@@ -378,14 +412,14 @@ public class PanelCalculate extends javax.swing.JPanel {
         }
         TableData.setModel(modelo);
     }
-    
-    public void clearCamp(){
+
+    public void clearCamp() {
         txtX.setText("");
         txtY.setText("");
     }
-    
-    public void verifAumentDate(){
-         // Opciones disponibles para el usuario
+
+    public void verifAumentDate() {
+        // Opciones disponibles para el usuario
         String[] opciones = {"Aumentar Datos ", "Remplazar Datos"};
 
         // Mostrar el JOptionPane con las opciones y guardar la opción seleccionada
@@ -400,51 +434,69 @@ public class PanelCalculate extends javax.swing.JPanel {
                 opciones[0] // Opción predeterminada
         );
 
-        if(opcionSeleccionada == 0){
+        if (opcionSeleccionada == 0) {
             importExcel();
             aumentData();
-        }else if(opcionSeleccionada == 1){
+        } else if (opcionSeleccionada == 1) {
             Static.xList = new ArrayList();
             Static.yList = new ArrayList();
             importExcel();
             aument();
         }
-        
+
     }
-    
-    
-    public void importExcel(){
-       if(archivo_selec.showDialog(null, "Seleccionar archivo") == JFileChooser.APPROVE_OPTION){ // CUADRO DE SLECCION DE CARPETA 
-                archivo = archivo_selec.getSelectedFile();
-                if(archivo.getName().endsWith("xls") || archivo.getName().endsWith("xlsx")){ //Si el archivo tiene extension excel
-                    /*Enviamos por pamaremtro el archivo y
+
+    public void importExcel() {
+        if (archivo_selec.showDialog(null, "Seleccionar archivo") == JFileChooser.APPROVE_OPTION) { // CUADRO DE SLECCION DE CARPETA 
+            archivo = archivo_selec.getSelectedFile();
+            if (archivo.getName().endsWith("xls") || archivo.getName().endsWith("xlsx")) { //Si el archivo tiene extension excel
+                /*Enviamos por pamaremtro el archivo y
                     *el llenado de datos ala tabla*/
-                    model_ex.importar(archivo, TableData) ;
-                    JOptionPane.showMessageDialog(null, "\n Importacion Exitosa", 
-                            "IMPORTAR", JOptionPane.INFORMATION_MESSAGE); 
-                }else{
-                    JOptionPane.showMessageDialog(null, "Seleccione un archivo excel");
-                }
+                model_ex.importar(archivo, TableData);
+                JOptionPane.showMessageDialog(null, "\n Importacion Exitosa",
+                        "IMPORTAR", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Seleccione un archivo excel");
+            }
         }
     }
-    
-    void aumentData(){
+
+    void aumentData() {
         aument();
         listTable();
     }
-    
-    void aument(){
+
+    void aument() {
         /*LLenado de datos nuevos en la lsita estitca*/
-        for(int i=0; i<TableData.getRowCount(); i++){
+        for (int i = 0; i < TableData.getRowCount(); i++) {
             System.out.println("Agregando");
             Static.xList.add(Double.parseDouble(valueOf(TableData.getValueAt(i, 0))));
             Static.yList.add(Double.parseDouble(valueOf(TableData.getValueAt(i, 1))));
         }
     }
+
+    /**
+     *
+     * @param p Panel de Ingreso
+     * @param width Ancho
+     * @param height Alto
+     * @param c contenedor
+     */
+    public void addContainer(JPanel p, int width, int height, JPanel c) {
+        p.setSize(width, height);
+        p.setLocation(0, 0);
+        c.removeAll();
+        c.add(p, BorderLayout.CENTER);
+        c.revalidate();
+        c.repaint();
+    }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ButtonAddData;
     private javax.swing.JLabel ButtonAddFile;
     private javax.swing.JLabel ButtonCalculate;
+    private javax.swing.JPanel PanelContentCalc;
     private javax.swing.JTable TableData;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel5;

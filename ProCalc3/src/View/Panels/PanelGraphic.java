@@ -18,8 +18,7 @@ public class PanelGraphic extends javax.swing.JPanel {
      */
     public PanelGraphic() {
         initComponents();
-        setBackground(new Color(0, 0, 0, 0));
-
+        setBackground(new Color(44,45,52));
     }
 
     /**

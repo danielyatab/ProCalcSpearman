@@ -4,6 +4,7 @@
  */
 package View;
 
+import Controller.ControlFile;
 import View.Panels.PanelCalc;
 import View.Panels.PanelCalculate;
 import View.Panels.PanelGraphic;
@@ -31,8 +32,11 @@ public class Main extends javax.swing.JFrame {
      * Creates new form Main
      */
     public Main() {
+        /*Inicializacion de carpeta y archivo*/
+        ControlFile.createCarpet();
+        ControlFile.createDocument();
+        
         initComponents();
-
         setLocationRelativeTo(null);
         setBackground(new Color(0, 0, 0, 0));
         autoList();
